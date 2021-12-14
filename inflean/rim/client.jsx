@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import ResponseCheck from "./ResponseCheck";
+import RSPClass from "./RSPClass";
 
-ReactDOM.render(<ResponseCheck />, document.querySelector("#root"));
+ReactDOM.render(<RSPClass />, document.querySelector("#root"));
