@@ -26,11 +26,11 @@ const RSP = () => {
 
   useEffect(() => {
     // componentDidMount, componentDidUpdate 역할(1대1 대응은 아님)
-    console.log("다시 실행");
+    // console.log("다시 실행");
     interval.current = setInterval(changeHand, 100);
     return () => {
       // componentWillUnmount 역할
-      console.log("종료");
+      // console.log("종료");
       clearInterval(interval.current);
     };
   }, [imgCoord]);
@@ -45,9 +45,12 @@ const RSP = () => {
     }
   };
 
-  onClickBtn = (choice) => () => {
-    clearInterval(interval);
+  const onClickBtn = (choice) => () => {
+    clearInterval(interval.current);
+    interval.current = null;
+
     const myScore = scores[choice];
+    console.log(myScore);
     const cpuScore = scores[computerChoice(imgCoord)];
     const diff = myScore - cpuScore;
     if (diff === 0) {
@@ -60,7 +63,7 @@ const RSP = () => {
       setscore((prevState) => prevState - 1);
     }
     setTimeout(() => {
-      const interval = setInterval(changeHand, 100);
+      interval.current = setInterval(changeHand, 100);
     }, 1000);
   };
 
