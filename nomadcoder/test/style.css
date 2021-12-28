@@ -1,0 +1,22 @@
+/* body {
+  background: beige;
+}
+h1 {
+  color: cornflowerblue;
+  transition: color 0.5s ease-in-out;
+}
+.active {
+  color: tomato;
+}
+
+.sexy-font {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+} */
+
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}

@@ -1,0 +1,10 @@
+{
+  "compilerIptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noImplicitAny": true
+  }
+}
+
+//allowJs 이 프로젝트내에 자바스크립트를 허용하겠다.
+//noImplicitAny 무조건 타입이 있어야 한다 any라도
