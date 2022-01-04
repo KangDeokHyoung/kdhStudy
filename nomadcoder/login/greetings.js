@@ -31,3 +31,5 @@ if (savedUsername === null) {
 } else {
   paintGreetings(savedUsername);
 }
+
+export const test = 1;
