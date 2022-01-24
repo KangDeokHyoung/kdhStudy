@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ExpenseFilter.css";
 
-const ExpenseFilter = () => {
-  const [select, setSelect] = useState();
+const ExpenseFilter = ({ onChangeFilter, selected }) => {
   const dropdownChangeHandler = (e) => {
     e.preventDefault();
-    console.log(e.target.vlaue);
+    onChangeFilter(e.target.value);
   };
 
-    console.log(select)
   return (
     <div className="expenses-filter">
       <div className="expenses-filter__control">
         <label>Filter by year</label>
-        <select onChange={dropdownChangeHandler}>
+        <select value={selected} onChange={dropdownChangeHandler}>
           <option vlaue="2022">2022</option>
           <option vlaue="2021">2021</option>
           <option vlaue="2020">2020</option>

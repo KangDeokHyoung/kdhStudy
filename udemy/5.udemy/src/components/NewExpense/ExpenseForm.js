@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = ({ onSaveExpenseData }) => {
+const ExpenseForm = ({ onSaveExpenseData, setIsLogin }) => {
   // const [enterdTitle, setEnterdTitle] = useState();
   // const [enterdAmout, setEnterdAmout] = useState();
   // const [enterddate, setEnterddate] = useState();
@@ -34,7 +34,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
     e.preventDefault();
     const expenseData = {
       title: userInput.enterdTitle,
-      amout: userInput.enterdAmout,
+      amount: userInput.enterdAmout,
       date: new Date(userInput.enterdDate),
     };
     onSaveExpenseData(expenseData);
@@ -44,6 +44,10 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
       enterdAmout: "",
       enterdDate: "",
     });
+  };
+
+  const closeHandler = () => {
+    setIsLogin(false);
   };
 
   return (
@@ -70,6 +74,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
       </div>
       <div className="nnew-expense__actions">
         <button type="submit">Add Expense</button>
+        <button onClick={closeHandler.bind()}>Cancel</button>
       </div>
     </form>
   );

@@ -1,0 +1,35 @@
+.modal-Wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+
+  .modal-button {
+    cursor: pointer;
+    background: rgb(33, 43, 102);
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+  }
+  .modal-content {
+    display: flex;
+    background: gold;
+    width: 500px;
+    height: 400px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+  }
+}
