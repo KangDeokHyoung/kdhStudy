@@ -5,9 +5,7 @@ import "./MainContentLayout.scss";
 const MainContentLayout = () => {
   return (
     <div className="main-content">
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 };

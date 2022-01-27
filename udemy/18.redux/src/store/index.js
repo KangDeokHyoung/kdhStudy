@@ -1,39 +1,45 @@
 /* eslint-disable default-case */
-import { createStore } from "redux";
-import { produce } from "immer";
+// import { createStore } from "redux";
+// import { produce } from "immer";
+import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./action/counter";
 
-const initialState = { counter: 0, showCounter: true };
+export const store = configureStore({
+  reducer: { counter: counterReducer },
+});
 
-const counterReducer = (state = initialState, action) => {
-  // return produce(state, (draft) => {
-  //   switch (action.type) {
-  //     case "INCREMENT":
-  //       draft.counter = state.counter + 1;
-  //       break;
-  //     case "DECREMENT":
-  //       draft.counter = state.counter - 1;
-  //       break;
-  //     case "TOGGLE":
-  //       draft.showCounter = !state.showCounter;
-  //       break;
-  //   }
-  // });
+// const initialState = { counter: 0, showCounter: true };
 
-  if (action.type === "INCREMENT") {
-    return produce((state, draft) => draft.push({ counter: state.counter + 1 }));
-  }
-  if (action.type === "DECREMENT") {
-    return { counter: state.counter - 1, showCounter: state.showCounter };
-  }
-  if (action.type === "INCREASEBY5") {
-    return { counter: state.counter + action.value, showCounter: state.showCounter };
-  }
-  if (action.type === "TOGGLE") {
-    return { counter: state.counter, showCounter: !state.showCounter };
-  }
-  return state;
-};
+// const counterReducer = (state = initialState, action) => {
+//   // return produce(state, (draft) => {
+//   //   switch (action.type) {
+//   //     case "INCREMENT":
+//   //       draft.counter = state.counter + 1;
+//   //       break;
+//   //     case "DECREMENT":
+//   //       draft.counter = state.counter - 1;
+//   //       break;
+//   //     case "TOGGLE":
+//   //       draft.showCounter = !state.showCounter;
+//   //       break;
+//   //   }
+//   // });
 
-const store = createStore(counterReducer);
+//   if (action.type === "INCREMENT") {
+//     return produce((state, draft) => draft.push({ counter: state.counter + 1 }));
+//   }
+//   if (action.type === "DECREMENT") {
+//     return { counter: state.counter - 1, showCounter: state.showCounter };
+//   }
+//   if (action.type === "INCREASEBY5") {
+//     return { counter: state.counter + action.value, showCounter: state.showCounter };
+//   }
+//   if (action.type === "TOGGLE") {
+//     return { counter: state.counter, showCounter: !state.showCounter };
+//   }
+//   return state;
+// };
 
-export default store;
+// const store = createStore(counterReducer);
+
+// export default store;
