@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Main.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-// import { increment } from "../../store/slice/counterSlice";
 import ItemList from "../main/itemlist/ItemList";
 
 export interface Props {
@@ -13,10 +12,8 @@ export interface Props {
 }
 
 const Main: React.FC<Props> = (props) => {
-  const data = useSelector((state: RootState) => state.counter.counter);
-  // const dispatch = useDispatch();
-  const { disabled } = props;
   const [checked, setChecked] = useState([0, 0, 0]);
+  const Do = ["Todo", "Doing", "Done"];
 
   const checkHandler = (i: number) => {
     setChecked((prevState) => {
@@ -33,20 +30,21 @@ const Main: React.FC<Props> = (props) => {
           <ul className="breadcrumb">
             <li>프로젝트</li>
             <li>/</li>
-            <li>{data}</li>
+            {/* <li>{data}</li> */}
           </ul>
         </div>
-        <h4>{data}</h4>
+        {/* <h4>{data}</h4> */}
       </div>
       <div id="main-content-body">
         <div className="main-content-list-wrap">
-          {/* {checked.map((_, i) => {
-            return <ItemList checked={checked[i]} checkHandler={() => checkHandler(i)} />;
-          })} */}
-
-          <ItemList checked={checked[0]} checkHandler={() => checkHandler(0)} />
-          <ItemList checked={checked[1]} checkHandler={() => checkHandler(1)} />
-          <ItemList checked={checked[2]} checkHandler={() => checkHandler(2)} />
+          {checked.map((_, i) => (
+            <ItemList
+              Do={Do[i]}
+              key={i}
+              checked={checked[i]}
+              checkHandler={() => checkHandler(i)}
+            />
+          ))}
         </div>
       </div>
     </>

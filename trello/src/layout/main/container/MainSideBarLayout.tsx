@@ -3,7 +3,7 @@ import "./MainSideBarLayout.scss";
 import { IoCaretForwardSharp, IoAppsSharp } from "react-icons/io5";
 import { HiChevronRight } from "react-icons/hi";
 import { AiOutlinePlus } from "react-icons/ai";
-import { Drawer, Button, ButtonToolbar } from "rsuite";
+import { Drawer, Button, ButtonToolbar, Placeholder } from "rsuite";
 
 const MainSideBarLayout = () => {
   const [open, setOpen] = useState(false);
@@ -26,13 +26,14 @@ const MainSideBarLayout = () => {
           <div className="main-sidebar-list-title">
             <h5>Your Boards</h5>
             <ButtonToolbar>
-              <Button onClick={() => setOpen(true)}>
+              <Button onClick={() => setOpen(true)} className="Button">
                 <AiOutlinePlus className="list-title-info" />
               </Button>
             </ButtonToolbar>
+
             <Drawer open={open} onClose={() => setOpen(false)}>
               <Drawer.Body>
-                <div className="box"></div>
+                <Placeholder.Paragraph graph="image" className="Placeholder" />
               </Drawer.Body>
             </Drawer>
           </div>

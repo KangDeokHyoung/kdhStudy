@@ -43,13 +43,10 @@
     }
   }
   .header-logout {
-    width: 21px;
-    height: 23px;
     margin-left: 30px;
-    i.logout-info {
-      background: url(../../../img/logout.png) no-repeat 0 0px;
-      width: 21px;
-      height: 23px;
+    .logout-info {
+      font-size: 25px;
+      color: white;
       cursor: pointer;
     }
   }

@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./common/scss/reset.scss";
+import "./common/scss/rsuitejs.scss";
 
 import { Provider } from "react-redux";
 import { store } from "./store/store";

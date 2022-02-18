@@ -10,24 +10,44 @@ const initialState = {
   isValid: null,
 };
 
-const EmailReducer = (state, action) => {
-  if (action.type === "USER_INPUT") {
-    return { value: action.val, isValid: action.val.includes("@") };
+const EmailReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "USER_INPUT":
+      return {
+        value: action.val,
+        isValid: action.val.includes("@"),
+      };
+
+    case "INPUT_BLUR":
+      return {
+        value: state.value,
+        isValid: state.value.includes("@"),
+      };
+
+    default:
+      return {
+        state,
+      };
   }
-  if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.includes("@") };
-  }
-  return { value: "", isValid: false };
 };
 
-const passwordReducer = (state, action) => {
-  if (action.type === "USER_INPUT") {
-    return { value: action.val, isValid: action.val.trim().length > 6 };
+const passwordReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "USER_INPUT":
+      return {
+        value: action.val,
+        isValid: action.val.trim().length > 6,
+      };
+    case "INPUT_BLUR":
+      return {
+        value: state.value,
+        isValid: state.value.trim().length > 6,
+      };
+    default:
+      return {
+        state,
+      };
   }
-  if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.trim().length > 6 };
-  }
-  return { value: "", isValid: false };
 };
 
 const Login = (props) => {
@@ -70,14 +90,9 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if(formIsValid){
+    if (formIsValid) {
       data.onLogin(emailState.value, passwordState.value);
-    }else if(!emailIsValid) {
-
-    }else {
-      
     }
-   
   };
 
   return (

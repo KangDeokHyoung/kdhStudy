@@ -48,16 +48,27 @@
         justify-content: space-between;
         align-items: center;
         height: 20px;
-        .box {
-          height: 100%;
-          width: 200px;
-          background-color: red;
+        .Button {
+          background-color: transparent;
+          padding: 0;
         }
+        .Button:visited {
+          background-color: transparent;
+        }
+        .Button:active {
+          background-color: transparent;
+        }
+
         .list-title-info {
           color: #92a6cb;
           cursor: pointer;
           font-size: 18px;
           font-weight: bold;
+        }
+        .Placeholder {
+          width: 100%;
+          height: 100%;
+          position: fixed;
         }
       }
       .main-sidebar-list {
