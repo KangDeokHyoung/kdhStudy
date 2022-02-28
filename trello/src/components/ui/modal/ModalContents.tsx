@@ -6,7 +6,6 @@ const ModalContents = ({ closeHandler }: any) => {
       <div className="modal-content">
         <div>모달컨텐츠</div>
       </div>
-      <div className="modal-bg" onClick={closeHandler} />
     </>
   );
 };

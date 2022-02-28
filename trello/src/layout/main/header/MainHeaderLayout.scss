@@ -20,8 +20,8 @@
   }
   .header-contents {
     @include display-flex(center, space-between);
-    width: calc(100% - 254px);
-    padding: 0 20px;
+    width: 100%;
+    padding: 0 34px;
     .header-input {
       position: relative;
       i.serch-info {
@@ -41,13 +41,25 @@
     .header-contents-title {
       color: white;
     }
+    .header-contents-utils {
+      display: flex;
+      align-items: center;
+    }
   }
-  .header-logout {
-    margin-left: 30px;
+  .header-users {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    margin-top: 1px;
     .logout-info {
-      font-size: 25px;
+      font-size: 28px;
       color: white;
       cursor: pointer;
+    }
+    .rs-btn-subtle:hover,
+    .rs-btn-subtle:active,
+    .rs-btn-subtle:focus {
+      background-color: inherit;
     }
   }
 }

@@ -1,10 +1,11 @@
 import React from "react";
-// import Modal from "./components/ui/modal/Modal";
-// import ModalContents from "./components/ui/modal/ModalContents";
+
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import LoginPage from "./page/LoginPage";
 import MainPage from "./page/MainPage";
 import MainLayout from "./layout/main/MainLayout";
+import Login from "components/login/Login";
+import SignUp from "components/login/SignUp";
 
 const AuthElement = ({ children }: any) => {
   const tokens = localStorage.getItem("token");
@@ -13,13 +14,14 @@ const AuthElement = ({ children }: any) => {
 
 const LoginElement = ({ children }: any) => {
   const tokens = localStorage.getItem("token");
-  return !tokens ? children : <Navigate to="/main/workspace" />;
+  return !tokens ? children : <Navigate to="/main" />;
 };
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate replace to="/login" />} />
         <Route
           path="/"
           element={
@@ -27,7 +29,10 @@ const App = () => {
               <LoginPage />
             </LoginElement>
           }
-        />
+        >
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Route>
         <Route
           path="/main"
           element={
@@ -36,19 +41,10 @@ const App = () => {
             </AuthElement>
           }
         >
-          <Route path="/main/workspace" element={<MainPage />} />
-          {/* <Route path="/main/workspace/test1" /> */}
+          <Route path="/main" element={<MainPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
-
-    // <Modal
-    //   content={({ closeHandler }: any) => {
-    //     return <ModalContents closeHandler={closeHandler} />;
-    //   }}
-    // >
-    //   <div className="modal-button">모달버튼</div>
-    // </Modal>
   );
 };
 

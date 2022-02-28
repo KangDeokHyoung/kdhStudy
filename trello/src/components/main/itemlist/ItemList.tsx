@@ -2,19 +2,10 @@ import React, { useEffect, useState } from "react";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { BiTime } from "react-icons/bi";
 import { BsCheckCircleFill } from "react-icons/bs";
-// import { DoListTitle } from "./styled";
-import { DeleteCardComponent, AddCardComponet } from "../../ui/popver/CustomComponent";
+import { DeleteCardComponent, AddCardComponet } from "../../ui/popover/CustomComponent";
 import "./itemList.scss";
 import { db } from "common/components/firebase";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  increment,
-  doc,
-  deleteDoc,
-} from "firebase/firestore";
+import { collection, getDocs, addDoc, doc, deleteDoc, query, orderBy } from "firebase/firestore";
 
 interface Props {
   checked: number;
@@ -32,11 +23,11 @@ const MainDoListTitle: React.FC<{ Do: string }> = ({ Do }) => {
 
 const ItemList: React.FC<Props> = ({ Do, checked, checkHandler }) => {
   const [users, setUsers] = useState<any[]>([]);
-
   const usersCollectionRef = collection(db, "todos");
   const getTodos = async () => {
-    const response = await getDocs(usersCollectionRef);
-    const data = response.docs.map((el: any) => ({ ...el.data(), id: el.id }));
+    const q = query(usersCollectionRef, orderBy("dates", "desc"));
+    const response = await getDocs(q);
+    const data = response.docs.map((el: any) => ({ data: el.data(), id: el.id }));
     setUsers(data);
   };
 
@@ -45,7 +36,8 @@ const ItemList: React.FC<Props> = ({ Do, checked, checkHandler }) => {
   }, []);
 
   const createUser = async (addCard: string) => {
-    await addDoc(usersCollectionRef, { addCard, population: increment(100) });
+    const dates = new Date().getTime(); // getTime 숫자로 변경해준다.
+    await addDoc(usersCollectionRef, { addCard, dates });
     getTodos();
   };
 
@@ -67,7 +59,7 @@ const ItemList: React.FC<Props> = ({ Do, checked, checkHandler }) => {
 
           {users.map((el) => (
             <div key={el.id} className="list-input">
-              <div className="list-input-box">{el.addCard}</div>
+              <div className="list-input-box">{el.data.addCard}</div>
               <DeleteCardComponent
                 placement="bottom"
                 deleteUser={deleteUser}

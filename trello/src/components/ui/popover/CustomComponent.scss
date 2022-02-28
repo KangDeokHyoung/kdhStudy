@@ -16,3 +16,18 @@
 .delete-pop {
   cursor: pointer;
 }
+.user-popover-wrap {
+  .rs-popover {
+    padding: 0;
+  }
+
+  .user-popover {
+    .btn {
+      cursor: pointer;
+      padding: 12px;
+    }
+    .btn:hover {
+      background-color: rgb(224, 224, 224);
+    }
+  }
+}

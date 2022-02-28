@@ -6,10 +6,10 @@ import MainContentLayout from "./container/MainContentLayout";
 import "./MainLayout.scss";
 
 const MainLayout = () => {
-  const storedToken = localStorage.getItem("token");
-  const [tokens] = useState(!!storedToken);
+  // const storedToken = localStorage.getItem("token");
+  // const [tokens] = useState(!!storedToken);
 
-  if (!tokens) return <Navigate to="/" />;
+  // if (!tokens) return <Navigate to="/" />;
 
   return (
     <div id="main-screen">

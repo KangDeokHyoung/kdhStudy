@@ -20,8 +20,9 @@ const App = () => {
   const [newAge, setNewAge] = useState(0);
 
   const usersCollectionRef = collection(db, "todos");
+  const q = query(usersCollectionRef, orderBy("dates", "desc"));
   const getTodos = async () => {
-    const data = await getDocs(usersCollectionRef);
+    const data = await getDocs(q);
     setUsers(data.docs.map((el) => ({ ...el.data(), id: el.id })));
   };
 
@@ -29,8 +30,9 @@ const App = () => {
     getTodos();
   }, []);
 
-  const createUser = async () => {
-    await addDoc(usersCollectionRef, { name: newName, age: Number(newAge) });
+  const createUser = async (addCard) => {
+    const dates = new Date().getTime(); // getTime 숫자로 변경해준다.
+    await addDoc(usersCollectionRef, { addCard, dates });
     getTodos();
   };
 
