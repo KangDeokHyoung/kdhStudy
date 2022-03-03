@@ -5,11 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { onSignIn } from "store/slice/LoginSlice";
-import { getAuth, sendPasswordResetEmail, updatePassword } from "firebase/auth";
 import "./Login.scss";
-
-// import { db } from 'common/components/firebase';
-
 
 const Login = () => {
   const navigate = useNavigate();
